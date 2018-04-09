@@ -8,3 +8,8 @@ const students = [
         name: 'Lisa',
     }
 ];
+
+// returns array met de resultaten
+module.exports.fetchAll = () => {
+    return students;
+}
