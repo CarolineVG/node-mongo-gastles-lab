@@ -6,6 +6,9 @@ const config = {
     port: 3000,
 };
 
+// Body parser
+app.use(bodyParser.json({ limit: "50mb", keepExtensions: true }));
+
 // Init routes
 require("./routes/")(app);
 
