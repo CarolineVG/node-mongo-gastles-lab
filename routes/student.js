@@ -14,7 +14,7 @@ const students = [
 ];
 
 module.exports = (app) => {
-    // get home page and send hello world
+    // get api/students route
     app.get('/api/students', (req, res) => {
         res.send('Hello World')
     });
