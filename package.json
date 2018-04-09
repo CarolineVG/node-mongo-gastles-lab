@@ -8,5 +8,8 @@
     "hello": "node my-custom-script"
   },
   "author": "Caroline Van Gossum",
-  "license": "ISC"
+  "license": "ISC",
+  "dependencies": {
+    "chalk": "^2.3.1"
+  }
 }
