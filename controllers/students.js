@@ -31,3 +31,8 @@ module.exports.create = (req, res) => {
 module.exports.update = (req, res) => {
     res.status(200).json(req, body); 
 };
+
+/* DELETE */
+module.exports.delete = (req, res) => {
+    res.status(204).send();  
+};

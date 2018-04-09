@@ -19,8 +19,5 @@ module.exports = (app) => {
     app.route('/api/students/:id').put(studentsController.update); 
 
     /* DELETE api/students id */
-    /*app.route('/api/students/:id').delete((req, res) => {
-        // 204: no content -> delete 
-        res.status(204).send();
-    });*/
+    app.route('/api/students/:id').delete(studentsController.delete);
 }
