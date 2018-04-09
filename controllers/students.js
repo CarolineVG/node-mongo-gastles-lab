@@ -26,3 +26,8 @@ module.exports.create = (req, res) => {
         id: (students.length + 1).toString(),
     }));
 };
+
+/* UPDATE */
+module.exports.update = (req, res) => {
+    res.status(200).json(req, body); 
+};

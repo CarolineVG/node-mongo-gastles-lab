@@ -14,11 +14,9 @@ module.exports = (app) => {
 
     /* POST api/students */
     app.route('/api/students').post(studentsController.create); 
+
     /* PUT api/students id */
-    /*app.route('/api/students/:id').put((req, res) => {
-        // 200: success
-        res.status(200).json(req.body);
-    });
+    app.route('/api/students/:id').put(studentsController.update); 
 
     /* DELETE api/students id */
     /*app.route('/api/students/:id').delete((req, res) => {
