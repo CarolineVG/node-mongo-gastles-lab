@@ -1,17 +1,5 @@
 const middleware = require('../middleware/auth');
 
-// make json file for the api
-const students = [
-    {
-        id: '1',
-        name: 'Caroline',
-    },
-    {
-        id: '2',
-        name: 'Lisa',
-    }
-];
-
 module.exports = (app) => {
     /* GET api/students */
     app.route('/api/students').get((req, res) => {
