@@ -1,5 +1,4 @@
-const glob = require("glob"); // requires multiple modules using glob patterns 
-const path = require("path"); // file and directory paths
+const middleware = require('../middleware/auth');
 
 // make json file for the api
 const students = [
@@ -14,15 +13,28 @@ const students = [
 ];
 
 module.exports = (app) => {
-    // get api/students route
-    app.get('/api/students', (req, res) => {
-        res.send('Hello World')
+    /* GET api/students */
+    app.route('/api/students').get((req, res) => {
+        res.status(200).json(students); // 200: success -> show students.json
     });
-    
-    // ?
-    glob.sync("./routes/!(index).js", {
-        absolute: true,
-    }).forEach(route => {
-        require(route)(app);
+    /* GET api/students id -> http://localhost:3000/api/students/1 */
+    app.route('/api/students/:id').get((req, res) => {
+        // search in students 
+        const student = students.find((stu) => {
+            // if student id == request id
+            return stu.id === req.params.id;
+        });
+        // 200: success -> show 
+        if (student) {
+            res.status(200).json(student);
+        } else {
+            // 200: not found -> error
+            res.status(404).json({
+                error: 404,
+                message: 'Not Found'
+            });
+        }
+
+        
     });
-};
+}
