@@ -4,6 +4,9 @@ const app = express();
 const config = {
     port: 3000,
 };
+
+// Init routes
+require("./routes/")(app);
  
 app.get('/', (req, res) => {
     // stuur hello world als er naar / gesurft wordt
