@@ -1,7 +1,4 @@
-//const middleware = require('../middleware/auth');
-
 const studentsController = require('../controllers/students');
-
 
 module.exports = (app) => {
     /* GET api students */
