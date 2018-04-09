@@ -19,3 +19,10 @@ module.exports.fetchOne = (req, res) => {
         });
     }
 };
+
+/* CREATE */
+module.exports.create = (req, res) => {
+    res.status(201).json(Object.assign({}, req.body, {
+        id: (students.length + 1).toString(),
+    }));
+};

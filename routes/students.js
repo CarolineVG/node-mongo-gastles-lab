@@ -7,15 +7,13 @@ module.exports = (app) => {
     /* GET api students */
     app.route('/api/students').get(studentsController.fetchAll);
 
+    /* GET api students by id */
+    app.route('/api/students/:id').get(studentsController.fetchOne);
+
     /* MIDDLEWARE */
 
     /* POST api/students */
-    /*app.route('/api/students').post(middleware, (req, res) => {
-        // 201: created
-        res.status(201).json(Object.assign({}, req.body, {
-            id: (students.length + 1).toString(),
-        }));
-    });
+    app.route('/api/students').post(studentsController.create); 
     /* PUT api/students id */
     /*app.route('/api/students/:id').put((req, res) => {
         // 200: success
