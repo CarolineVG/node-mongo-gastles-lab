@@ -11,7 +11,8 @@ const students = [
 
 // returns array met de resultaten
 module.exports.fetchAll = () => {
-    return students;
+    // find en execute studentmodel
+    return StudentModel.find({}).exec();
 }
 
 // returns array op basis van id
