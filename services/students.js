@@ -4,7 +4,7 @@ const StudentModel = require('../models/student');
 // returns array met de resultaten
 module.exports.fetchAll = () => {
     // find en execute studentmodel
-    return StudentModel.find({}).exec();
+    return StudentModel.find({}).lean().exec();
 }
 
 // returns array op basis van id
