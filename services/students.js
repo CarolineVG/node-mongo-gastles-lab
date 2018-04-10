@@ -17,7 +17,14 @@ module.exports.fetchAll = () => {
 
 // returns array op basis van id
 module.exports.fetchById = (id) => {
-    return students.find((student) => {
-        return student.id === id;
-    });
+    // als id niet bestaat
+    if (!mongoose.Types.ObjectId.isValid(id)) {
+        return new Promise((resolve, reject) => {
+            // return null
+            resolve(null);
+        });
+    }
+    // anders zoek de student met het id
+    // .lean -> return js objects (niet mongoose)
+    return StudentModel.findOne({ _id: id }).lean().exec();
 }
