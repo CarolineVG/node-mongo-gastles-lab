@@ -45,7 +45,20 @@ module.exports.create = (req, res) => {
 
 /* UPDATE */
 module.exports.update = (req, res) => {
-    res.status(200).json(req, body); 
+    studentsService.update(req.params.id, req.body).then((student) => {
+        if (student) {
+            res.status(200).json(student); // success
+        } else { // bestaat niet
+            res.status(404).json({
+                error: 404,
+                message: 'Not Found'
+            });
+        }
+    }, (err) => {
+        res.status(500).json({
+            message: err.message,
+        });
+    });
 };
 
 /* DELETE */
