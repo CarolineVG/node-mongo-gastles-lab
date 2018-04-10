@@ -34,9 +34,13 @@ module.exports.fetchOne = (req, res) => {
 
 /* CREATE */
 module.exports.create = (req, res) => {
-    res.status(201).json(Object.assign({}, req.body, {
-        id: (students.length + 1).toString(),
-    }));
+    studentsService.create(req.body).then((student) => {
+        res.status(201).json(student); // success 
+    }, (err) => {
+        res.status(500).json({
+            message: err.message,
+        });
+    });
 };
 
 /* UPDATE */
