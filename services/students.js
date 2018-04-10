@@ -1,13 +1,5 @@
-const students = [
-    {
-        id: '1',
-        name: 'Caroline',
-    },
-    {
-        id: '2',
-        name: 'Lisa',
-    }
-];
+const mongoose = require('mongoose'); 
+const StudentModel = require('../models/student'); 
 
 // returns array met de resultaten
 module.exports.fetchAll = () => {
@@ -30,7 +22,9 @@ module.exports.fetchById = (id) => {
 }
 
 // create
-StudentModel.create(student);
+module.exports.create = (student) => {
+    return StudentModel.create(student);
+}
 
 // update
 module.exports.update = (id, student) => {
