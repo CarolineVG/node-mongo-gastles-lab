@@ -2,7 +2,13 @@ const studentsService = require('../services/students');
 
 /* FETCH ALL */
 module.exports.fetchAll = (req, res) => {
-    res.status(200).json(studentsService.fetchAll()); // 200: success -> show array 
+    studentsService.fetchAll().then((students) => {
+        res.status(200).json(students); // success
+    }, (err) => { // error
+        res.status(500).json({
+            message: err.message,
+        });
+    });
 };
 
 /* FETCH BY ID */
