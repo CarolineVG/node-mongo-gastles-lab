@@ -7,18 +7,24 @@ module.exports.fetchAll = (req, res) => {
 
 /* FETCH BY ID */
 module.exports.fetchOne = (req, res) => {
-    // fetch by id (id in url)
-    const student = studentsService.fetchById(req.params.id)
-
-    if (student) {
-        res.status(200).json(student);
-    } else {
-        res.status(404).json({
-            error: 404,
-            message: 'Not Found'
+    // fetch by id (id in url), dan
+    studentsService.fetchById(req.params.id).then((student) => {
+        if (student) {
+            res.status(200).json(student); // success
+        } else { // bestaat niet
+            res.status(404).json({
+                error: 404,
+                message: 'Not Found'
+            });
+        }
+    }, (err) => {
+        res.status(500).json({
+            message: err.message,
         });
-    }
+    });
 };
+
+
 
 /* CREATE */
 module.exports.create = (req, res) => {
