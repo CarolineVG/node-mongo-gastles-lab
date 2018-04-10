@@ -63,5 +63,18 @@ module.exports.update = (req, res) => {
 
 /* DELETE */
 module.exports.delete = (req, res) => {
-    res.status(204).send();  
+    studentsService.delete(req.params.id).then((response) => {
+        if (response && response.n > 0) {
+            res.status(204).send(); // delete
+        } else { // bestaat niet
+            res.status(404).json({
+                error: 404,
+                message: 'Not Found'
+            });
+        }
+    }, (err) => {
+        res.status(500).json({
+            message: err.message,
+        });
+    })
 };
